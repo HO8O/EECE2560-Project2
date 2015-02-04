@@ -8,8 +8,9 @@ public:
 	~wordlist();
 	void ReadFromFile(std::string path);
 	wordlist(std::string path);
+	int partition(std::vector<std::string> list, int left, int right);
 	void insertionsort();
-	void quicksort();
+	void wordlist::quicksort(std::vector<std::string> list, int left, int right);
 	void mergesort();
 	std::vector<std::string> GetWords()const;
 	std::string lookup(std::string word)const;

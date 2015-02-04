@@ -39,12 +39,39 @@ wordlist::wordlist(std::string path)
 }
 
 
-void wordlist::insertionsort()
+int partition(std::vector<std::string> list, int left, int right)
 {
+	std::string p = list[left];
+	int i = left;
+	int j = right + 1;
+	do {
+		do {
+			i = i + 1;
+			
+		} while (list[i] < p && list[i] < right);
+		do{
+			j = j - 1;
+		} while (list[j] > p);
+		swap(list[i], list[j]);
+	} while (i < j);
+	swap(list[i], list[j]);
+	swap(list[left], list[j]);
+	return j;
 }
 
 
-void wordlist::quicksort()
+void wordlist::quicksort(std::vector<std::string> list, int left, int right)
+{
+	if (left < right)
+	{
+		int s = partition(list, left, right);
+		quicksort(list, left, s - 1);
+		quicksort(list, s + 1, right);
+	}
+}
+
+
+void wordlist::insertionsort()
 {
 }
 
