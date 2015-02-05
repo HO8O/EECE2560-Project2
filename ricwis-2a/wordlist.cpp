@@ -48,8 +48,8 @@ int partition(std::vector<std::string> list, int left, int right)
 	do {
 		do {
 			i = i + 1;
-			
-		} while (list[i] < p && list[i] < right);
+
+		} while (list[i] < p && i < right);
 		do{
 			j = j - 1;
 		} while (list[j] > p);
@@ -60,25 +60,60 @@ int partition(std::vector<std::string> list, int left, int right)
 	return j;
 }
 
+void wordlist::quicksort(std::vector<std::string> list)
+{
+    quicksortfunc(list, 0, list.size()-1);
+}
 
-void wordlist::quicksort(std::vector<std::string> list, int left, int right)
+
+void wordlist::quicksortfunc(std::vector<std::string> list, int left, int right)
 {
 	if (left < right)
 	{
 		int s = partition(list, left, right);
-		quicksort(list, left, s - 1);
-		quicksort(list, s + 1, right);
+		quicksortfunc(list, left, s - 1);
+		quicksortfunc(list, s + 1, right);
 	}
 }
 */
 
-void wordlist::insertionsort()
+void wordlist::insertionsort(std::vector<std::string> list)
 {
+    insertionsortfunc(list, list.size());
 }
 
 
-void wordlist::mergesort()
+void wordlist::insertionsortfunc(std::vector<std::string> list, int length)
 {
+    int j;
+    for (int i=0; i<length-1; i++)
+    {
+        j=i;
+        while (j > 0  &&  list[j-1] > list[j])
+        {
+            swap(list[j], list[j-1]);
+            j = j-1;
+        }
+    }
+}
+
+
+void wordlist::mergesort(std::vector<std::string> list)
+{
+}
+
+/*
+void wordlist::merge(std::vector<std::string> list, int p, int q, int r)
+{
+    int n1 = q-p+1;
+    int n2 = r-q;
+    for(int i=1)
+}
+*/
+
+void wordlist::mergesortfunc()
+{
+
 }
 
 
