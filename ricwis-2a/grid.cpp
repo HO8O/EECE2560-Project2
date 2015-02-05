@@ -95,5 +95,5 @@ int grid::GetHeight()const
 
 int grid::GetWidth()const
 {
-	return widtht;
+	return width;
 }

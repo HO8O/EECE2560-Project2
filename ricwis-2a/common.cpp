@@ -31,6 +31,48 @@ void checkWordsRight(const wordlist &mylist, const grid &g, const unsigned int x
 	}
 }
 
+void checkWordsLeft(const wordlist &mylist, const grid &g, const unsigned int x, const unsigned int y)
+{
+	std::string myWord;
+	myWord.push_back(g.GetGrid()[x][y]);
+
+	//so we start with 5 letters to save the lookups
+	for (unsigned int j = 1; j < 4; j++)
+	{
+		unsigned int newX;
+		if (x - j >= g.GetWidth())
+		{
+			newX = g.GetWidth() - 1;
+		}
+		else
+		{
+			newX = x - j;
+		}
+		myWord.push_back(g.GetGrid()[newX][y]);
+	}
+
+	for (unsigned int i = 5; i <= 22; i++)
+	{
+		if (mylist.lookup(myWord))
+		{
+			std::cout << myWord << "\n";
+			return;
+		}
+
+		unsigned int newX;
+		if (x - i >= g.GetWidth())
+		{
+			newX = g.GetWidth() - 1;
+		}
+		else
+		{
+			newX = x - i;
+		}
+
+		myWord.push_back(g.GetGrid()[newX][y]);
+	}
+}
+
 // Shortest word is 5
 // Longest word is 22
 void findMatches(const wordlist &wl, const grid &g)
@@ -39,7 +81,8 @@ void findMatches(const wordlist &wl, const grid &g)
 	{
 		for (int y = 0; y < g.GetHeight(); y++)
 		{
-			
+			checkWordsLeft(wl, g, x, y);
+			checkWordsRight(wl, g, x, y);
 		}
 	}
 }
@@ -51,7 +94,7 @@ void search(int alg)
 	std::cout << "Please enter path to wordlist : ";
 	std::cin >> wordListPath;
 	std::cout << "Loading word list....\n";
-	wordlist list = wordlist(wordListPath);
+	wordlist myList = wordlist(wordListPath);
 
 	//load grid
 	std::string gridPath;
@@ -70,12 +113,12 @@ void search(int alg)
 		//myList.mergesort();
 		break;
 	case 3:
-		//myList.quicksort();
+		myList.quicksort();
 		break;
 	default:
 		std::cout << "Invalid alg";
 		break;
 	}
 
-	findMatches(list, myGrid);
+	findMatches(myList, myGrid);
 }

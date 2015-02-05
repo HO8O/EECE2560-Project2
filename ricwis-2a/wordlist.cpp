@@ -97,7 +97,7 @@ void wordlist::insertionsortfunc(int length)
     }
 }
 
-
+/*
 void wordlist::mergesort()
 {
     mergesortfunc(0, myWordList.size()-1);
@@ -146,7 +146,7 @@ void wordlist::mergesortfunc(int p, int r)
         merge(p, q, r);
     }
 }
-
+*/
 
 bool wordlist::lookup(std::string word)const
 {
