@@ -52,8 +52,9 @@ void grid::ReadFromFile(std::string path)
 		std::cout << "Grid is " << width << " x " << height << '\n';
 
 		//read each row
-		while (std::getline(file, str))
+		for (int j = 0; j < height; j++)
 		{
+			std::getline(file, str);
 			std::vector<char> row;
 			std::string rowbuffer = parseOutSpace(str);
 			for (int i = 0; i < width; i++)
@@ -62,8 +63,6 @@ void grid::ReadFromFile(std::string path)
 			}
 			myGrid.push_back(row);
 		}
-
-
 	}
 	else
 	{

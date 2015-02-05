@@ -13,7 +13,7 @@ public:
 	void wordlist::quicksort(std::vector<std::string> list, int left, int right);
 	void mergesort();
 	std::vector<std::string> GetWords()const;
-	std::string lookup(std::string word)const;
+	bool lookup(std::string word)const;
 private:
 	std::vector<std::string> myWordList;
 };

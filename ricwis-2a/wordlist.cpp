@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <algorithm>
 
 wordlist::wordlist()
 {
@@ -81,9 +82,9 @@ void wordlist::mergesort()
 }
 
 
-std::string wordlist::lookup(std::string word)const
+bool wordlist::lookup(std::string word)const
 {
-	return std::string();
+	return (std::binary_search(myWordList.begin(), myWordList.end(), word));
 }
 
 std::vector<std::string> wordlist::GetWords()const
