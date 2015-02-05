@@ -8,14 +8,14 @@ public:
 	~wordlist();
 	void ReadFromFile(std::string path);
 	wordlist(std::string path);
-	int partition(std::vector<std::string> list, int left, int right);
-	void insertionsort(std::vector<std::string> list);
-	void insertionsortfunc(std::vector<std::string> list, int length);
-	void quicksort(std::vector<std::string> list);
-	void quicksortfunc(std::vector<std::string> list, int left, int right);
-	void mergesort(std::vector<std::string> list);
-	void merge(std::vector<std::string> list, int p, int q, int r);
-	void mergesortfunc();
+	int partition(int left, int right);
+	void insertionsort();
+	void insertionsortfunc(int length);
+	void quicksort()
+	void quicksortfunc(int left, int right);
+	void mergesort();
+	void merge(int p, int q, int r);
+	void mergesortfunc(int p, int r);
 	std::vector<std::string> GetWords()const;
 	bool lookup(std::string word)const;
 private:
