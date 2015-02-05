@@ -39,8 +39,8 @@ wordlist::wordlist(std::string path)
 	ReadFromFile(path);
 }
 
-/*
-int partition(std::vector<std::string> list, int left, int right)
+
+int wordlist::partition(std::vector<std::string> list, int left, int right)
 {
 	std::string p = list[left];
 	int i = left;
@@ -75,7 +75,7 @@ void wordlist::quicksortfunc(std::vector<std::string> list, int left, int right)
 		quicksortfunc(list, s + 1, right);
 	}
 }
-*/
+
 
 void wordlist::insertionsort(std::vector<std::string> list)
 {

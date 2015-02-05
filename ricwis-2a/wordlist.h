@@ -11,7 +11,7 @@ public:
 	int partition(std::vector<std::string> list, int left, int right);
 	void insertionsort(std::vector<std::string> list);
 	void insertionsortfunc(std::vector<std::string> list, int length);
-	void quicksort(std::vector<std::string> list)
+	void quicksort(std::vector<std::string> list);
 	void quicksortfunc(std::vector<std::string> list, int left, int right);
 	void mergesort(std::vector<std::string> list);
 	void merge(std::vector<std::string> list, int p, int q, int r);

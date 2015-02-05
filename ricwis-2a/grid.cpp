@@ -87,3 +87,13 @@ std::ostream &operator<<(std::ostream &stream, const grid &mygrid)
 	}
 	return stream;
 }
+
+int grid::GetHeight()const
+{
+	return height;
+}
+
+int grid::GetWidth()const
+{
+	return widtht;
+}
