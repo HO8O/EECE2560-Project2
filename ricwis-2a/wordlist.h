@@ -11,7 +11,7 @@ public:
 	int partition(int left, int right);
 	void insertionsort();
 	void insertionsortfunc(int length);
-	void quicksort()
+	void quicksort();
 	void quicksortfunc(int left, int right);
 	void mergesort();
 	void merge(int p, int q, int r);
