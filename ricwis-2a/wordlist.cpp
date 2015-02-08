@@ -5,16 +5,36 @@
 #include <fstream>
 #include <algorithm>
 
+
+/*
+*	Function : wordlist()
+*	Summary : Constructs the Wordlist object
+*	Params : N/A
+*	Returns : void
+*/
 wordlist::wordlist()
 {
 }
 
 
+/*
+*	Function : ~wordlist()
+*	Summary : Deconstructs the Wordlist object
+*	Params : N/A
+*	Returns : void
+*/
 wordlist::~wordlist()
 {
 }
 
 
+
+/*
+*	Function : ReadFromFile()
+*	Summary : Reads the list of words from a file and enters it into myWordList
+*	Params : String containing the path of the file
+*	Returns : void
+*/
 void wordlist::ReadFromFile(std::string path)
 {
 	myWordList.clear();
@@ -34,12 +54,26 @@ void wordlist::ReadFromFile(std::string path)
 }
 
 
+
+/*
+*	Function : wordlist()
+*	Summary : Constructs the Wordlist object and immediately calls ReadFromFile()
+*	Params : String containing the path of a file
+*	Returns : void
+*/
 wordlist::wordlist(std::string path)
 {
 	ReadFromFile(path);
 }
 
 
+
+/*
+*	Function : partition()
+*	Summary : Takes the first index and moves all the words that come before it alphabetically in front of it and vice versa
+*	Params : Two int indecies that contain the words to be partitioned
+*	Returns : Int containing the index where the partition ended
+*/
 int wordlist::partition(int left, int right)
 {
 	std::string p = myWordList[left];
@@ -60,12 +94,25 @@ int wordlist::partition(int left, int right)
 	return j;
 }
 
+
+/*
+*	Function : quicksort()
+*	Summary : Calls the quick sort function
+*	Params : N/A
+*	Returns : void
+*/
 void wordlist::quicksort()
 {
     quicksortfunc(0, myWordList.size()-1);
 }
 
 
+/*
+*	Function : quicksortfunc()
+*	Summary : Runs a quick sort on myWordList
+*	Params : Two int indicies that contain the words to be quick sorted
+*	Returns : void
+*/
 void wordlist::quicksortfunc(int left, int right)
 {
 	if (left < right)
@@ -77,12 +124,25 @@ void wordlist::quicksortfunc(int left, int right)
 }
 
 
+/*
+*	Function : insertionsort()
+*	Summary : Calls the insertion sort function
+*	Params : N/A
+*	Returns : void
+*/
 void wordlist::insertionsort()
 {
     insertionsortfunc(myWordList.size());
 }
 
 
+
+/*
+*	Function : insertionsortfunc()
+*	Summary : Runs an insertion sort on myWordList
+*	Params : Int with the length of the list to be sorted
+*	Returns : void
+*/
 void wordlist::insertionsortfunc(int length)
 {
     int j;
@@ -97,30 +157,44 @@ void wordlist::insertionsortfunc(int length)
     }
 }
 
+
 /*
+*	Function : mergesort()
+*	Summary : Calls the merge sort function
+*	Params : N/A
+*	Returns : void
+*/
 void wordlist::mergesort()
 {
     mergesortfunc(0, myWordList.size()-1);
 }
 
 
+/*
+*	Function : merge()
+*	Summary : Merges two word lists into one sorted one
+*	Params : Start index, middle index, end index respectively
+*	Returns : void
+*/
 void wordlist::merge(int p, int q, int r)
 {
     int n1 = q-p+1;
     int n2 = r-q;
-    std::vector<std::string> R[n2];
-    std::vector<std::string> L[n1];
-    for(int i=1; i<=n1; i++)
+    std::vector<std::string> R;
+	R.resize(n2);
+    std::vector<std::string> L;
+	L.resize(n1);
+    for(int i = 0; i < n1; i++)
     {
         L[i]= myWordList[p+i-1];
     }
-    for(int i=1; i<=n2; i++)
+    for(int i = 0; i < n2; i++)
     {
         R[i]= myWordList[q+i];
     }
     L[n1+1]= "zzzzzz";
     R[n2+1]= "zzzzzz";
-    i=1; j=1;
+    int i=0; int j=0;
     for(int k=p; p<=r; k++)
     {
         if(L[i] <= R[j])
@@ -136,6 +210,12 @@ void wordlist::merge(int p, int q, int r)
 }
 
 
+/*
+*	Function : mergesortfunc()
+*	Summary : Runs a merge sort on myWordList
+*	Params : Start index and end index of the words to be sorted
+*	Returns : void
+*/
 void wordlist::mergesortfunc(int p, int r)
 {
     if (p<r)
@@ -146,18 +226,38 @@ void wordlist::mergesortfunc(int p, int r)
         merge(p, q, r);
     }
 }
-*/
 
+
+/*
+*	Function : lookup()
+*	Summary : Runs a binary search on myWordList to see if the word is there
+*	Params : Word to be looked up
+*	Returns : A bool on whether the word is contained in myWordList
+*/
 bool wordlist::lookup(std::string word)const
 {
 	return (std::binary_search(myWordList.begin(), myWordList.end(), word));
 }
 
+
+/*
+*	Function : GetWords()
+*	Summary : Returns myWordList
+*	Params : N/A
+*	Returns : String vector myWordlist
+*/
 std::vector<std::string> wordlist::GetWords()const
 {
 	return myWordList;
 }
 
+
+/*
+*	Function : &operator<<()
+*	Summary : Overloads the << operator to print out myWordList
+*	Params : N/A
+*	Returns : ostream
+*/
 std::ostream &operator<<(std::ostream &stream, const wordlist &words)
 {
 	for each(std::string str in words.GetWords())

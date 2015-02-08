@@ -6,22 +6,48 @@
 #include <vector>
 #include <iostream>
 
+
+/*
+*	Function : grid()
+*	Summary : Constructs the Grid object
+*	Params : N/A
+*	Returns : void
+*/
 grid::grid()
 {
 }
 
 
+/*
+*	Function : ~grid()
+*	Summary : Deconstructs the Grid object
+*	Params : N/A
+*	Returns : void
+*/
 grid::~grid()
 {
 	myGrid.clear();
 }
 
 
+/*
+*	Function : grid()
+*	Summary : Constructs the grid object and immediately calls ReadFromFile
+*	Params : String with a path to a file
+*	Returns : void
+*/
 grid::grid(std::string path)
 {
 	ReadFromFile(path);
 }
 
+
+/*
+*	Function : parseOutSpace()
+*	Summary : Parses out the spaces of a string
+*	Params : String
+*	Returns : String with spaces sparsed out
+*/
 std::string parseOutSpace(const std::string &string)
 {
 	std::string output;
@@ -36,6 +62,13 @@ std::string parseOutSpace(const std::string &string)
 	return output;
 }
 
+
+/*
+*	Function : ReadFromFile()
+*	Summary : Reads and populates the grid from a file
+*	Params : String with a path to a file
+*	Returns : void
+*/
 void grid::ReadFromFile(std::string path)
 {
 	myGrid.clear();
@@ -70,11 +103,25 @@ void grid::ReadFromFile(std::string path)
 	}
 }
 
+
+/*
+*	Function : getGrid()
+*	Summary : Returns myGrid
+*	Params : N/A
+*	Returns : Vector of char vectors
+*/
 std::vector < std::vector<char> > grid::GetGrid()const
 {
 	return myGrid;
 }
 
+
+/*
+*	Function : &operator<<()
+*	Summary : Overloads the << operator to output the grid
+*	Params : N/A
+*	Returns : ostream
+*/
 std::ostream &operator<<(std::ostream &stream, const grid &mygrid)
 {
 	for each(std::vector<char> row in mygrid.GetGrid())
@@ -88,11 +135,25 @@ std::ostream &operator<<(std::ostream &stream, const grid &mygrid)
 	return stream;
 }
 
+
+/*
+*	Function : getHeight()
+*	Summary : Returns the grid height
+*	Params : N/A
+*	Returns : Int height
+*/
 int grid::GetHeight()const
 {
 	return height;
 }
 
+
+/*
+*	Function : GetWidth()
+*	Summary : Returns the grid width
+*	Params : N/A
+*	Returns : Int width
+*/
 int grid::GetWidth()const
 {
 	return width;
