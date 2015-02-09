@@ -85,12 +85,12 @@ void grid::ReadFromFile(std::string path)
 		std::cout << "Grid is " << width << " x " << height << '\n';
 
 		//read each row
-		for (int j = 0; j < height; j++)
+		for (unsigned int j = 0; j < height; j++)
 		{
 			std::getline(file, str);
 			std::vector<char> row;
 			std::string rowbuffer = parseOutSpace(str);
-			for (int i = 0; i < width; i++)
+			for (unsigned int i = 0; i < width; i++)
 			{
 				row.push_back(rowbuffer[i]);
 			}
@@ -110,7 +110,7 @@ void grid::ReadFromFile(std::string path)
 *	Params : N/A
 *	Returns : Vector of char vectors
 */
-std::vector < std::vector<char> > grid::GetGrid()const
+std::vector < std::vector<char> > grid::GetGrid()
 {
 	return myGrid;
 }
@@ -124,7 +124,7 @@ std::vector < std::vector<char> > grid::GetGrid()const
 */
 std::ostream &operator<<(std::ostream &stream, const grid &mygrid)
 {
-	for each(std::vector<char> row in mygrid.GetGrid())
+	for each(std::vector<char> row in mygrid.myGrid)
 	{
 		for each(char c in row)
 		{
@@ -142,7 +142,7 @@ std::ostream &operator<<(std::ostream &stream, const grid &mygrid)
 *	Params : N/A
 *	Returns : Int height
 */
-int grid::GetHeight()const
+unsigned int grid::GetHeight()const
 {
 	return height;
 }
@@ -154,7 +154,7 @@ int grid::GetHeight()const
 *	Params : N/A
 *	Returns : Int width
 */
-int grid::GetWidth()const
+unsigned int grid::GetWidth()const
 {
 	return width;
 }

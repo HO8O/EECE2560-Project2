@@ -8,13 +8,13 @@ public:
 	~grid();
 	grid(std::string path);
 	void ReadFromFile(std::string path);
-	std::vector < std::vector<char> > GetGrid()const;
-	int grid::GetWidth()const;
-	int grid::GetHeight()const;
-private:
+	std::vector < std::vector<char> > GetGrid();
+	unsigned int grid::GetWidth()const;
+	unsigned int grid::GetHeight()const;
 	std::vector<std::vector<char>> myGrid;
-	int height;
-	int width;
+private:
+	unsigned int height;
+	unsigned int width;
 };
 
 std::ostream &operator<<(std::ostream &stream, const grid &mygrid);

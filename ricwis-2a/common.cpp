@@ -5,6 +5,7 @@
 
 #include <string>
 #include <iostream>
+#include <time.h>
 
 
 /*
@@ -16,25 +17,25 @@
 void checkWordsRight(const wordlist &mylist, const grid &g, const unsigned int x, const unsigned int y)
 {
 	std::string myWord;
-	myWord.push_back(g.GetGrid()[x][y]);
+	myWord.push_back(g.myGrid[x][y]);
 
 	//so we start with 5 letters to save the lookups
-	for (int j = 1; j < 4; j++)
+	for (unsigned int j = 1; j < 4; j++)
 	{
 		unsigned int newX = (x + j) % g.GetWidth();
-		myWord.push_back(g.GetGrid()[newX][y]);
+		myWord.push_back(g.myGrid[newX][y]);
 	}
 
-	for (int i = 5; i <= 22; i++)
+	for (unsigned int i = 5; i <= 22; i++)
 	{
 		if (mylist.lookup(myWord))
 		{
 			std::cout << myWord << "\n";
-			return;
+			//return;
 		}
 
 		unsigned int newX = (x + i) % g.GetWidth();
-		myWord.push_back(g.GetGrid()[newX][y]);
+		myWord.push_back(g.myGrid[newX][y]);
 	}
 }
 
@@ -48,7 +49,7 @@ void checkWordsRight(const wordlist &mylist, const grid &g, const unsigned int x
 void checkWordsLeft(const wordlist &mylist, const grid &g, const unsigned int x, const unsigned int y)
 {
 	std::string myWord;
-	myWord.push_back(g.GetGrid()[x][y]);
+	myWord.push_back(g.myGrid[x][y]);
 
 	//so we start with 5 letters to save the lookups
 	for (unsigned int j = 1; j < 4; j++)
@@ -62,7 +63,7 @@ void checkWordsLeft(const wordlist &mylist, const grid &g, const unsigned int x,
 		{
 			newX = x - j;
 		}
-		myWord.push_back(g.GetGrid()[newX][y]);
+		myWord.push_back(g.myGrid[newX][y]);
 	}
 
 	for (unsigned int i = 5; i <= 22; i++)
@@ -70,7 +71,7 @@ void checkWordsLeft(const wordlist &mylist, const grid &g, const unsigned int x,
 		if (mylist.lookup(myWord))
 		{
 			std::cout << myWord << "\n";
-			return;
+			//return;
 		}
 
 		unsigned int newX;
@@ -83,7 +84,7 @@ void checkWordsLeft(const wordlist &mylist, const grid &g, const unsigned int x,
 			newX = x - i;
 		}
 
-		myWord.push_back(g.GetGrid()[newX][y]);
+		myWord.push_back(g.myGrid[newX][y]);
 	}
 }
 
@@ -97,7 +98,7 @@ void checkWordsLeft(const wordlist &mylist, const grid &g, const unsigned int x,
 void checkWordsUp(const wordlist &mylist, const grid &g, const unsigned int x, const unsigned int y)
 {
 	std::string myWord;
-	myWord.push_back(g.GetGrid()[x][y]);
+	myWord.push_back(g.myGrid[x][y]);
 
 	//so we start with 5 letters to save the lookups
 	for (unsigned int j = 1; j < 4; j++)
@@ -111,7 +112,7 @@ void checkWordsUp(const wordlist &mylist, const grid &g, const unsigned int x, c
 		{
 			newY = y - j;
 		}
-		myWord.push_back(g.GetGrid()[x][newY]);
+		myWord.push_back(g.myGrid[x][newY]);
 	}
 
 	for (unsigned int i = 5; i <= 22; i++)
@@ -119,7 +120,7 @@ void checkWordsUp(const wordlist &mylist, const grid &g, const unsigned int x, c
 		if (mylist.lookup(myWord))
 		{
 			std::cout << myWord << "\n";
-			return;
+			//return;
 		}
 
 		unsigned int newY;
@@ -132,7 +133,7 @@ void checkWordsUp(const wordlist &mylist, const grid &g, const unsigned int x, c
 			newY = y - i;
 		}
 
-		myWord.push_back(g.GetGrid()[x][newY]);
+		myWord.push_back(g.myGrid[x][newY]);
 	}
 }
 
@@ -146,25 +147,25 @@ void checkWordsUp(const wordlist &mylist, const grid &g, const unsigned int x, c
 void checkWordsDown(const wordlist &mylist, const grid &g, const unsigned int x, const unsigned int y)
 {
 	std::string myWord;
-	myWord.push_back(g.GetGrid()[x][y]);
+	myWord.push_back(g.myGrid[x][y]);
 
 	//so we start with 5 letters to save the lookups
-	for (int j = 1; j < 4; j++)
+	for (unsigned int j = 1; j < 4; j++)
 	{
 		unsigned int newY = (y + j) % g.GetHeight();
-		myWord.push_back(g.GetGrid()[x][newY]);
+		myWord.push_back(g.myGrid[x][newY]);
 	}
 
-	for (int i = 5; i <= 22; i++)
+	for (unsigned int i = 5; i <= 22; i++)
 	{
 		if (mylist.lookup(myWord))
 		{
 			std::cout << myWord << "\n";
-			return;
+			//return;
 		}
 
 		unsigned int newY = (y + i) % g.GetHeight();
-		myWord.push_back(g.GetGrid()[x][newY]);
+		myWord.push_back(g.myGrid[x][newY]);
 	}
 }
 
@@ -178,10 +179,10 @@ void checkWordsDown(const wordlist &mylist, const grid &g, const unsigned int x,
 void checkWordsUpRight(const wordlist &mylist, const grid &g, const unsigned int x, const unsigned int y)
 {
 	std::string myWord;
-	myWord.push_back(g.GetGrid()[x][y]);
+	myWord.push_back(g.myGrid[x][y]);
 
 	//so we start with 5 letters to save the lookups
-	for (int j = 1; j < 4; j++)
+	for (unsigned int j = 1; j < 4; j++)
 	{
 		unsigned int newX = (x + j) % g.GetWidth();
 		unsigned int newY;
@@ -193,15 +194,15 @@ void checkWordsUpRight(const wordlist &mylist, const grid &g, const unsigned int
 		{
 			newY = y - j;
 		}
-		myWord.push_back(g.GetGrid()[newX][newY]);
+		myWord.push_back(g.myGrid[newX][newY]);
 	}
 
-	for (int i = 5; i <= 22; i++)
+	for (unsigned int i = 5; i <= 22; i++)
 	{
 		if (mylist.lookup(myWord))
 		{
 			std::cout << myWord << "\n";
-			return;
+			//return;
 		}
 
 		unsigned int newX = (x + i) % g.GetWidth();
@@ -214,7 +215,7 @@ void checkWordsUpRight(const wordlist &mylist, const grid &g, const unsigned int
 		{
 			newY = y - i;
 		}
-		myWord.push_back(g.GetGrid()[newX][newY]);
+		myWord.push_back(g.myGrid[newX][newY]);
 	}
 }
 
@@ -228,27 +229,27 @@ void checkWordsUpRight(const wordlist &mylist, const grid &g, const unsigned int
 void checkWordsDownRight(const wordlist &mylist, const grid &g, const unsigned int x, const unsigned int y)
 {
 	std::string myWord;
-	myWord.push_back(g.GetGrid()[x][y]);
+	myWord.push_back(g.myGrid[x][y]);
 
 	//so we start with 5 letters to save the lookups
-	for (int j = 1; j < 4; j++)
+	for (unsigned int j = 1; j < 4; j++)
 	{
 		unsigned int newX = (x + j) % g.GetWidth();
 		unsigned int newY = (y + j) % g.GetHeight();
-		myWord.push_back(g.GetGrid()[newX][newY]);
+		myWord.push_back(g.myGrid[newX][newY]);
 	}
 
-	for (int i = 5; i <= 22; i++)
+	for (unsigned int i = 5; i <= 22; i++)
 	{
 		if (mylist.lookup(myWord))
 		{
 			std::cout << myWord << "\n";
-			return;
+			//return;
 		}
 
 		unsigned int newX = (x + i) % g.GetWidth();
 		unsigned int newY = (y + i) % g.GetHeight();
-		myWord.push_back(g.GetGrid()[newX][newY]);
+		myWord.push_back(g.myGrid[newX][newY]);
 	}
 }
 
@@ -262,7 +263,7 @@ void checkWordsDownRight(const wordlist &mylist, const grid &g, const unsigned i
 void checkWordsUpLeft(const wordlist &mylist, const grid &g, const unsigned int x, const unsigned int y)
 {
 	std::string myWord;
-	myWord.push_back(g.GetGrid()[x][y]);
+	myWord.push_back(g.myGrid[x][y]);
 
 	//so we start with 5 letters to save the lookups
 	for (unsigned int j = 1; j < 4; j++)
@@ -285,7 +286,7 @@ void checkWordsUpLeft(const wordlist &mylist, const grid &g, const unsigned int 
 		{
 			newY = y - j;
 		}
-		myWord.push_back(g.GetGrid()[newX][newY]);
+		myWord.push_back(g.myGrid[newX][newY]);
 	}
 
 	for (unsigned int i = 5; i <= 22; i++)
@@ -293,7 +294,7 @@ void checkWordsUpLeft(const wordlist &mylist, const grid &g, const unsigned int 
 		if (mylist.lookup(myWord))
 		{
 			std::cout << myWord << "\n";
-			return;
+			//return;
 		}
 
 		unsigned int newX;
@@ -314,7 +315,7 @@ void checkWordsUpLeft(const wordlist &mylist, const grid &g, const unsigned int 
 		{
 			newY = y - i;
 		}
-		myWord.push_back(g.GetGrid()[newX][newY]);
+		myWord.push_back(g.myGrid[newX][newY]);
 	}
 }
 
@@ -328,7 +329,7 @@ void checkWordsUpLeft(const wordlist &mylist, const grid &g, const unsigned int 
 void checkWordsDownLeft(const wordlist &mylist, const grid &g, const unsigned int x, const unsigned int y)
 {
 	std::string myWord;
-	myWord.push_back(g.GetGrid()[x][y]);
+	myWord.push_back(g.myGrid[x][y]);
 
 	//so we start with 5 letters to save the lookups
 	for (unsigned int j = 1; j < 4; j++)
@@ -343,7 +344,7 @@ void checkWordsDownLeft(const wordlist &mylist, const grid &g, const unsigned in
 			newX = x - j;
 		}
 		unsigned int newY = (y + j) % g.GetHeight();
-		myWord.push_back(g.GetGrid()[newX][newY]);
+		myWord.push_back(g.myGrid[newX][newY]);
 	}
 
 	for (unsigned int i = 5; i <= 22; i++)
@@ -351,7 +352,7 @@ void checkWordsDownLeft(const wordlist &mylist, const grid &g, const unsigned in
 		if (mylist.lookup(myWord))
 		{
 			std::cout << myWord << "\n";
-			return;
+			//return;
 		}
 
 		unsigned int newX;
@@ -364,7 +365,7 @@ void checkWordsDownLeft(const wordlist &mylist, const grid &g, const unsigned in
 			newX = x - i;
 		}
 		unsigned int newY = (y + i) % g.GetHeight();
-		myWord.push_back(g.GetGrid()[newX][newY]);
+		myWord.push_back(g.myGrid[newX][newY]);
 	}
 }
 
@@ -379,9 +380,9 @@ void checkWordsDownLeft(const wordlist &mylist, const grid &g, const unsigned in
 // Longest word is 22
 void findMatches(const wordlist &wl, const grid &g)
 {
-	for (int x = 0; x < g.GetWidth(); x++)
+	for (unsigned int x = 0; x < g.GetWidth(); x++)
 	{
-		for (int y = 0; y < g.GetHeight(); y++)
+		for (unsigned int y = 0; y < g.GetHeight(); y++)
 		{
 			checkWordsLeft(wl, g, x, y);
 			checkWordsRight(wl, g, x, y);
@@ -394,6 +395,7 @@ void findMatches(const wordlist &wl, const grid &g)
 			checkWordsDownLeft(wl, g, x, y);
 		}
 	}
+	std::cout << "Found words!\n";
 }
 
 
@@ -405,21 +407,39 @@ void findMatches(const wordlist &wl, const grid &g)
 */
 void search(int alg)
 {
+	clock_t start;
+	
 	//load wordlist
 	std::string wordListPath;
 	std::cout << "Please enter path to wordlist : ";
 	std::cin >> wordListPath;
 	std::cout << "Loading word list....\n";
+
+	start = clock();
+
 	wordlist myList = wordlist(wordListPath);
+
+	int diff = clock() - start;
+	std::cout << "Wordlist took " << (float)diff / CLOCKS_PER_SEC << " seconds to load\n";
 
 	//load grid
 	std::string gridPath;
 	std::cout << "Please enter path to grid : ";
 	std::cin >> gridPath;
 	std::cout << "Loading grid....\n";
+
+	start = clock();
+
 	grid myGrid = grid(gridPath);
 
+	diff = clock() - start;
+	std::cout << "Grid took " << (float)diff / CLOCKS_PER_SEC << " seconds to load\n";
+
 	//sort switch
+	std::cout << "Sorting word list....\n";
+
+	start = clock();
+
 	switch (alg)
 	{
 	case 1:
@@ -436,5 +456,15 @@ void search(int alg)
 		break;
 	}
 
+	diff = clock() - start;
+	std::cout << "Sort took " << (float)diff / CLOCKS_PER_SEC << " seconds to run\n";
+
+	std::cout << "Looking for words...\n";
+
+	start = clock();
+
 	findMatches(myList, myGrid);
+
+	diff = clock() - start;
+	std::cout << "Find matches took " << (float)diff / CLOCKS_PER_SEC << " seconds to run\n";
 }
