@@ -41,14 +41,18 @@ T heap<T>::getItem(int index)
 
 
 template <class T>
-void heap<T>::initMaxHeap()
+void heap<T>::initMaxHeap(std::vector<T> vector)
 {
+	myHeap = vector;
+	buildMaxHeap();
 }
 
 
 template <class T>
-void heap<T>::initMinHeap()
+void heap<T>::initMinHeap(std::vector<T> vector)
 {
+	myHeap = vector;
+	buildMinHeap();
 }
 
 
@@ -68,7 +72,7 @@ void heap<T>::maxHeapify(int i)
 		largest = i;
 	}
 
-	if (r <= myHeap.size() &&  A[r] > A[i])
+	if (r <= myHeap.size() &&  myHeap[r] > A[i])
 	{
 		largest = r;
 	}
@@ -85,6 +89,30 @@ void heap<T>::maxHeapify(int i)
 template <class T>
 void heap<T>::minHeapify(int i)
 {
+	int smallest;
+	int l = left(i);
+	int r = right(i);
+
+	if (l >= myHeap.size() && myHeap[l] < myHeap[i])
+	{
+		smallest = l;
+	}
+	else
+	{
+		smallest = i;
+	}
+
+	if (r >= myHeap.size() && myHeap[r] > A[i])
+	{
+		smallest = r;
+	}
+
+	//Swap A[i] with largest child
+	if (smallest != i)
+	{
+		std::swap(myHeap[i], myHeap[smallest]);
+		minHeapify(myHeap, smallest);
+	}
 }
 
 

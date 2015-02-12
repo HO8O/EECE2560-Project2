@@ -11,8 +11,8 @@ public:
 	int parent(int node);
 	int right(int node);
 	T getItem(int index);
-	void initMaxHeap();
-	void initMinHeap();
+	void initMaxHeap(std::vector<T>);
+	void initMinHeap(std::vector<T>);
 	void maxHeapify(int i);
 	void minHeapify(int i);
 	void buildMaxHeap();

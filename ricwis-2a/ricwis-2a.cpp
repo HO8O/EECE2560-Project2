@@ -5,13 +5,15 @@
 #include "wordlist.h"
 #include "grid.h"
 #include "common.h"
+#include "heap.h"
 
 #include <string>
 #include <iostream>
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	search(3);
+	//search(3);
+	heap<int> imHeapy();
 	while (1);
 	return 0;
 }
