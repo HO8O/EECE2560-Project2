@@ -14,19 +14,19 @@ heap::~heap()
 
 int heap::left(int node)
 {
-	return 2*node;
+	return (2*(node+1))-1;
 }
 
 
 int heap::parent(int node)
 {
-	return (node/2);
+	return ((node+1)/2)-1;
 }
 
 
 int heap::right(int node)
 {
-	return (2*node)+1;
+	return ((node+1)/2)-1;
 }
 
 Template<class T>
