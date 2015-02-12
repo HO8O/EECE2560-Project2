@@ -1,4 +1,5 @@
 #pragma once
+template <class T>
 class heap
 {
 public:
@@ -7,7 +8,7 @@ public:
 	int left(int node);
 	int parent(int node);
 	int right(int node);
-	int getItem(int index);
+	T getItem(int index);
 	void initMaxHeap();
 	void initMinHeap();
 	void maxHeapify();
