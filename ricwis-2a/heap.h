@@ -15,5 +15,8 @@ public:
 	void buildMaxHeap();
 	void buildMinHeap();
 	void heapSort();
+
+private:
+    std::vector<T> myHeap;
 };
 

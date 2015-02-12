@@ -14,25 +14,25 @@ heap::~heap()
 
 int heap::left(int node)
 {
-	return 0;
+	return 2*node;
 }
 
 
 int heap::parent(int node)
 {
-	return 0;
+	return (node/2);
 }
 
 
 int heap::right(int node)
 {
-	return 0;
+	return (2*node)+1;
 }
 
-
-int heap::getItem(int index)
+Template<class T>
+T heap::getItem(int index)
 {
-	return 0;
+	return myHeap[index];
 }
 
 
