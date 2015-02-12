@@ -1,71 +1,106 @@
 #include "stdafx.h"
 #include "heap.h"
+#include <vector>
 
+template<class T>
+heap<T>::heap()
+{
+}
 
-heap::heap()
+template <class T>
+heap<T>::~heap()
 {
 }
 
 
-heap::~heap()
+template <class T>
+int heap<T>::left(int node)
 {
+	return 2*(node+1);
 }
 
 
-int heap::left(int node)
+template <class T>
+int heap<T>::parent(int node)
 {
-	return (2*(node+1))-1;
+	return ((node+)/2);
 }
 
 
-int heap::parent(int node)
+template <class T>
+int heap<T>::right(int node)
 {
-	return ((node+1)/2)-1;
+	return (2*(node+1))+1;
 }
 
-
-int heap::right(int node)
-{
-	return ((node+1)/2)-1;
-}
-
-Template<class T>
-T heap::getItem(int index)
+template<class T>
+T heap<T>::getItem(int index)
 {
 	return myHeap[index];
 }
 
 
-void heap::initMaxHeap()
+template <class T>
+void heap<T>::initMaxHeap()
 {
 }
 
 
-void heap::initMinHeap()
+template <class T>
+void heap<T>::initMinHeap()
 {
 }
 
 
-void heap::maxHeapify()
+template <class T>
+void heap<T>::maxHeapify(int i)
+{
+	int largest;
+	int l = left(i);
+	int r = right(i);
+
+	if (l <=  myHeap.size() &&  myHeap[l] > myHeap[i])
+	{
+		largest = l;
+	}
+	else
+	{
+		largest = i;
+	}
+
+	if (r <= myHeap.size() &&  A[r] > A[i])
+	{
+		largest = r;
+	}
+
+	//Swap A[i] with largest child
+	if (largest != i)
+	{
+		std::swap(myHeap[i], myHeap[largest]);
+		maxHeapify(myHeap, largest);
+	}
+}
+
+
+template <class T>
+void heap<T>::minHeapify(int i)
 {
 }
 
 
-void heap::minHeapify()
+template <class T>
+void heap<T>::buildMaxHeap()
 {
 }
 
 
-void heap::buildMaxHeap()
+template <class T>
+void heap<T>::buildMinHeap()
 {
 }
 
 
-void heap::buildMinHeap()
-{
-}
-
-
-void heap::heapSort()
+template <class T>
+void heap<T>::heapSort()
 {
 }

@@ -1,4 +1,6 @@
 #pragma once
+#include <vector>
+
 template <class T>
 class heap
 {
@@ -11,8 +13,8 @@ public:
 	T getItem(int index);
 	void initMaxHeap();
 	void initMinHeap();
-	void maxHeapify();
-	void minHeapify();
+	void maxHeapify(int i);
+	void minHeapify(int i);
 	void buildMaxHeap();
 	void buildMinHeap();
 	void heapSort();
