@@ -13,7 +13,7 @@ public:
 
 	unsigned int parent(int node)const
 	{
-		return ((node + ) / 2);
+		return ((node + 1) / 2);
 	}
 
 	unsigned int right(int node)const
@@ -46,7 +46,7 @@ public:
 		unsigned int l = left(i);
 		unsigned int r = right(i);
 
-		if (l <= myHeap.size() && myHeap[l] > myHeap[i])
+		if (l < myHeap.size() && myHeap[l] > myHeap[i])
 		{
 			largest = l;
 		}
@@ -55,7 +55,7 @@ public:
 			largest = i;
 		}
 
-		if (r <= myHeap.size() && myHeap[r] > myHeap[i])
+		if (r < myHeap.size() && myHeap[r] > myHeap[i])
 		{
 			largest = r;
 		}
@@ -98,7 +98,7 @@ public:
 
 	void buildMaxHeap()
 	{
-		for (int i = (int)floor((float)myHeap.size() / (float)2); i >= 0; i--)
+		for (int i = myHeap.size() / 2; i >= 0; i--)
 		{
 			maxHeapify(i);
 		}
@@ -106,7 +106,7 @@ public:
 
 	void buildMinHeap()
 	{
-		for (int i = (int)floor((float)myHeap.size() / (float)2); i >= 0; i--)
+		for (int i = myHeap.size() / 2; i >= 0; i--)
 		{
 			minHeapify(i);
 		}
