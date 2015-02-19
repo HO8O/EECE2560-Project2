@@ -114,7 +114,15 @@ public:
 
 	void heapSort()
 	{
-
+		/*
+		//build max heap A
+		for(i = A.length; i > 2; i--)
+		{
+		//exchange A[i] with A[i]
+		//A.heapsize--;
+		max_heapify(A,1);
+		}
+		*/
 	}
 
 private:
