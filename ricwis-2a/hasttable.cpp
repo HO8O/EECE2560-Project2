@@ -1,3 +1,4 @@
+/*
 #include "stdafx.h"
 #include "hasttable.h"
 
@@ -32,3 +33,4 @@ int hasttable::hash(int item)
 {
 	return 0;
 }
+*/

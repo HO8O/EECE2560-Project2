@@ -1,17 +1,8 @@
+/*
+
 #include "stdafx.h"
 #include "heap.h"
 #include <vector>
-
-template<class T>
-heap<T>::heap()
-{
-}
-
-template <class T>
-heap<T>::~heap()
-{
-}
-
 
 template <class T>
 int heap<T>::left(int node)
@@ -72,7 +63,7 @@ void heap<T>::maxHeapify(int i)
 		largest = i;
 	}
 
-	if (r <= myHeap.size() &&  myHeap[r] > A[i])
+	if (r <= myHeap.size() &&  myHeap[r] > myHeap[i])
 	{
 		largest = r;
 	}
@@ -102,7 +93,7 @@ void heap<T>::minHeapify(int i)
 		smallest = i;
 	}
 
-	if (r >= myHeap.size() && myHeap[r] > A[i])
+	if (r >= myHeap.size() && myHeap[r] > myHeap[i])
 	{
 		smallest = r;
 	}
@@ -119,12 +110,20 @@ void heap<T>::minHeapify(int i)
 template <class T>
 void heap<T>::buildMaxHeap()
 {
+	for (int i = (int)floor((float)myHeap.size() / (float)2); i >= 0; i--)
+	{
+		maxHeapify(i);
+	}
 }
 
 
 template <class T>
 void heap<T>::buildMinHeap()
 {
+	for (int i = (int)floor((float)myHeap.size() / (float)2); i >= 0; i--)
+	{
+		minHeapify(i);
+	}
 }
 
 
@@ -132,3 +131,4 @@ template <class T>
 void heap<T>::heapSort()
 {
 }
+*/
