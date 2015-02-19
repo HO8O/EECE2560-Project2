@@ -8,7 +8,7 @@ public:
 
 	unsigned int left(int node)const
 	{
-		return 2 * (node + 1);
+		return (2 * (node + 1)) - 1;
 	}
 
 	unsigned int parent(int node)const
@@ -18,7 +18,7 @@ public:
 
 	unsigned int right(int node)const
 	{
-		return (2 * (node + 1)) + 1;
+		return (2 * (node + 1));
 	}
 
 	T getItem(int index)
@@ -55,7 +55,7 @@ public:
 			largest = i;
 		}
 
-		if (r < myHeap.size() && myHeap[r] > myHeap[i])
+		if (r < myHeap.size() && myHeap[r] > myHeap[largest])
 		{
 			largest = r;
 		}
@@ -64,17 +64,17 @@ public:
 		if (largest != i)
 		{
 			std::swap(myHeap[i], myHeap[largest]);
-			//maxHeapify(myHeap, largest);
+			maxHeapify(largest);
 		}
 	}
 
 	void minHeapify(int i)
 	{
-		int smallest;
-		int l = left(i);
-		int r = right(i);
+		unsigned int smallest;
+		unsigned int l = left(i);
+		unsigned int r = right(i);
 
-		if (l >= myHeap.size() && myHeap[l] < myHeap[i])
+		if (l < myHeap.size() && myHeap[l] < myHeap[i])
 		{
 			smallest = l;
 		}
@@ -83,7 +83,7 @@ public:
 			smallest = i;
 		}
 
-		if (r >= myHeap.size() && myHeap[r] > myHeap[i])
+		if (r < myHeap.size() && myHeap[r] < myHeap[smallest])
 		{
 			smallest = r;
 		}
@@ -92,7 +92,7 @@ public:
 		if (smallest != i)
 		{
 			std::swap(myHeap[i], myHeap[smallest]);
-			//minHeapify(myHeap, smallest);
+			minHeapify(smallest);
 		}
 	}
 
