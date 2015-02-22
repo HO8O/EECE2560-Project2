@@ -125,6 +125,11 @@ public:
 		*/
 	}
 
+	std::vector<T> GetHeap()
+	{
+		return myHeap;
+	}
+
 private:
     std::vector<T> myHeap;
 };
