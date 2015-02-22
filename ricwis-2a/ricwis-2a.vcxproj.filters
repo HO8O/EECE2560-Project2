@@ -36,7 +36,7 @@
     <ClInclude Include="heap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="hasttable.h">
+    <ClInclude Include="hashtable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

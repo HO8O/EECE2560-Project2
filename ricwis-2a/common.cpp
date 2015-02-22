@@ -2,6 +2,7 @@
 #include "common.h"
 #include "grid.h"
 #include "wordlist.h"
+#include "heap.h"
 
 #include <string>
 #include <iostream>
@@ -451,6 +452,8 @@ void search(int alg)
 	case 3:
 		myList.quicksort();
 		break;
+	case 4:
+		myList.heapSort();
 	default:
 		std::cout << "Invalid alg";
 		break;

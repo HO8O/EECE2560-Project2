@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include "hashtable.h"
 
 class wordlist
 {
@@ -18,8 +19,10 @@ public:
 	void mergesortfunc(int p, int r);
 	std::vector<std::string> GetWords()const;
 	bool lookup(std::string word)const;
+	void wordlist::heapSort();
 private:
 	std::vector<std::string> myWordList;
+	hashtable<std::string> myTable;
 };
 
 std::ostream &operator<<(std::ostream &stream, const wordlist &words);

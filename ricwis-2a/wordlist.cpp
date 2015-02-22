@@ -1,5 +1,8 @@
 #include "stdafx.h"
 #include "wordlist.h"
+#include "heap.h"
+#include "hashtable.h"
+
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -45,6 +48,7 @@ void wordlist::ReadFromFile(std::string path)
 		while (std::getline(file, str))
 		{
 			myWordList.push_back(str);
+			myTable.addItem(str);
 		}
 	}
 	else
@@ -251,6 +255,12 @@ std::vector<std::string> wordlist::GetWords()const
 	return myWordList;
 }
 
+void wordlist::heapSort()
+{
+	heap<std::string> tempHeap;
+	tempHeap.initMaxHeap(myWordList);
+	myWordList = tempHeap.GetHeap();
+}
 
 /*
 *	Function : &operator<<()
