@@ -13,7 +13,7 @@ public:
 
 	unsigned int parent(int node)const
 	{
-		return ((node + 1) / 2);
+		return ((node + 1) / 2) - 1;
 	}
 
 	unsigned int right(int node)const
@@ -46,7 +46,7 @@ public:
 		unsigned int l = left(i);
 		unsigned int r = right(i);
 
-		if (l < myHeap.size() && myHeap[l] > myHeap[i])
+		if (l < maxHeapSize && myHeap[l] > myHeap[i])
 		{
 			largest = l;
 		}
@@ -55,7 +55,7 @@ public:
 			largest = i;
 		}
 
-		if (r < myHeap.size() && myHeap[r] > myHeap[largest])
+		if (r < maxHeapSize && myHeap[r] > myHeap[largest])
 		{
 			largest = r;
 		}
@@ -67,7 +67,35 @@ public:
 			maxHeapify(largest);
 		}
 	}
+	/*
+	void maxHeapify(std::vector<T> tempHeap, int i)
+	{
+		unsigned int largest;
+		unsigned int l = left(i);
+		unsigned int r = right(i);
 
+		if (l < tempHeap.size() && tempHeap[l] > tempHeap[i])
+		{
+			largest = l;
+		}
+		else
+		{
+			largest = i;
+		}
+
+		if (r < tempHeap.size() && tempHeap[r] > tempHeap[largest])
+		{
+			largest = r;
+		}
+
+		//Swap A[i] with largest child
+		if (largest != i)
+		{
+			std::swap(tempHeap[i], tempHeap[largest]);
+			maxHeapify(tempHeap, largest);
+		}
+	}
+	*/
 	void minHeapify(int i)
 	{
 		unsigned int smallest;
@@ -98,6 +126,7 @@ public:
 
 	void buildMaxHeap()
 	{
+		maxHeapSize = myHeap.size();
 		for (int i = myHeap.size() / 2; i >= 0; i--)
 		{
 			maxHeapify(i);
@@ -114,15 +143,14 @@ public:
 
 	void heapSort()
 	{
-		/*
-		//build max heap A
-		for(i = A.length; i > 2; i--)
+		buildMaxHeap();
+		for(int i = maxHeapSize; i > 2; i--)
 		{
-		//exchange A[i] with A[i]
-		//A.heapsize--;
-		max_heapify(A,1);
+			swap(myHeap[1], myHeap[i]);
+			maxHeapSize--;
+			maxHeapify(1);
 		}
-		*/
+		maxHeapSize = myHeap.size();
 	}
 
 	std::vector<T> GetHeap()
@@ -132,5 +160,6 @@ public:
 
 private:
     std::vector<T> myHeap;
+	int maxHeapSize;
 };
 
