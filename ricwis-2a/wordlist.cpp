@@ -45,6 +45,7 @@ void wordlist::ReadFromFile(std::string path)
 	if (file.is_open())
 	{
 		std::string str;
+		myTable.initTable();
 		while (std::getline(file, str))
 		{
 			myWordList.push_back(str);

@@ -8,7 +8,13 @@ class hashtable
 {
 private:
 	std::vector<std::vector<T>> myTable;
+	unsigned int size = HASHTABLE_SIZE;
 public:
+	void initTable()
+	{
+		myTable.resize(size);
+	}
+
 	void addItem(T item)
 	{
 		myTable[hash(item)].push_back(item);
