@@ -143,7 +143,7 @@ public:
 
 	void heapSort()
 	{
-		buildMaxHeap();
+		//buildMaxHeap();
 		for(int i = maxHeapSize; i > 2; i--)
 		{
 			swap(myHeap[1], myHeap[i]);

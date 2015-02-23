@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <functional>
 
 #define HASHTABLE_SIZE 100
 
@@ -46,7 +47,8 @@ public:
 
 	int hash(T item)
 	{
-		return 0;
+		std::hash<T> h;
+		return h(item) % HASHTABLE_SIZE;
 	}
 };
 

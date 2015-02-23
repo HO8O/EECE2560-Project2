@@ -12,10 +12,7 @@
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	//search(3);
-	heap<int> imHeapy;
-	std::vector < int > vec = { 5, 15, 3, 2, 10 };
-	imHeapy.initMinHeap(vec);
+	search(4);
 
 	while (1);
 	return 0;

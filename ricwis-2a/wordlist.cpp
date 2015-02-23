@@ -260,6 +260,7 @@ void wordlist::heapSort()
 {
 	heap<std::string> tempHeap;
 	tempHeap.initMaxHeap(myWordList);
+	tempHeap.heapSort();
 	myWordList = tempHeap.GetHeap();
 }
 
