@@ -67,35 +67,7 @@ public:
 			maxHeapify(largest);
 		}
 	}
-	/*
-	void maxHeapify(std::vector<T> tempHeap, int i)
-	{
-		unsigned int largest;
-		unsigned int l = left(i);
-		unsigned int r = right(i);
 
-		if (l < tempHeap.size() && tempHeap[l] > tempHeap[i])
-		{
-			largest = l;
-		}
-		else
-		{
-			largest = i;
-		}
-
-		if (r < tempHeap.size() && tempHeap[r] > tempHeap[largest])
-		{
-			largest = r;
-		}
-
-		//Swap A[i] with largest child
-		if (largest != i)
-		{
-			std::swap(tempHeap[i], tempHeap[largest]);
-			maxHeapify(tempHeap, largest);
-		}
-	}
-	*/
 	void minHeapify(int i)
 	{
 		unsigned int smallest;
@@ -126,7 +98,7 @@ public:
 
 	void buildMaxHeap()
 	{
-		maxHeapSize = myHeap.size();
+		maxHeapSize = myHeap.size() - 1;
 		for (int i = myHeap.size() / 2; i >= 0; i--)
 		{
 			maxHeapify(i);
@@ -143,14 +115,14 @@ public:
 
 	void heapSort()
 	{
-		//buildMaxHeap();
+		buildMaxHeap();
 		for(int i = maxHeapSize; i > 2; i--)
 		{
-			swap(myHeap[1], myHeap[i]);
+			swap(myHeap[0], myHeap[i]);
 			maxHeapSize--;
-			maxHeapify(1);
+			maxHeapify(i);
 		}
-		maxHeapSize = myHeap.size();
+		maxHeapSize = myHeap.size() - 1;
 	}
 
 	std::vector<T> GetHeap()

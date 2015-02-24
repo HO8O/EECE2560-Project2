@@ -454,6 +454,7 @@ void search(int alg)
 		break;
 	case 4:
 		myList.heapSort();
+		break;
 	default:
 		std::cout << "Invalid alg";
 		break;
